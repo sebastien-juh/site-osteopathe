@@ -23,19 +23,70 @@
             header h1 { font-size: 2em; }
             nav a { display: block; margin: 10px 0; }
         }
+    /* Bouton hamburger */
+    .hamburger {
+        font-size: 30px;
+        cursor: pointer;
+        padding: 15px;
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 1001;
+        color: #2e8b57;
+    }
+
+    /* Menu caché par défaut */
+    .menu {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -300px;
+        width: 250px;
+        height: 100%;
+        background: #2e8b57;
+        padding-top: 60px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+        z-index: 1000;
+        transition: right 0.3s ease;
+    }
+
+    /* Liens du menu */
+    .menu a {
+        color: white;
+        padding: 20px;
+        text-decoration: none;
+        font-size: 1.2em;
+    }
+
+    .menu a:hover {
+        background: rgba(0,0,0,0.1);
+    }
+
+    /* Menu ouvert */
+    .menu.active {
+        right: 0;
+    }
     </style>
 </head>
 <body>
 
+<!-- Bouton Hamburger -->
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<!-- Menu déroulant -->
+<nav id="menu" class="menu" onclick="toggleMenu()">
+    <a href="index.html">Accueil</a>
+    <a href="about.html">À propos</a>
+    <a href="tarifs.html">Tarifs</a>
+    <a href="contact.html">Contact</a>
+</nav>
+
 <header>
     <h1>Justine Duong</h1>
     <p>Ostéopathe D.O. - Val d'Europe</p>
-    <nav>
-        <a href="#services">Services</a>
-        <a href="#cabinet">Le Cabinet</a>
-        <a href="#contact">Contact</a>
-    </nav>
 </header>
+
 
 <section id="services">
     <h2>Services proposés</h2>
@@ -72,6 +123,11 @@
 <footer>
     <p>&copy; 2025 Justine Duong - Ostéopathe Val d'Europe. Tous droits réservés.</p>
 </footer>
-
+<script>
+    function toggleMenu() {
+        var menu = document.getElementById('menu');
+        menu.classList.toggle('active');
+    }
+</script>
 </body>
 </html>
